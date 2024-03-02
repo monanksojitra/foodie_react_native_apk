@@ -8,11 +8,12 @@ module.exports = {
   ],
 
   theme: {
-    colors: {
-      originPrimary: "#FA4A0C",
-      white: { DEFAULT: "#FFF", 100: "#F2F2F2" },
+    extend: {
+      colors: {
+        originPrimary: "#FA4A0C",
+        white: { DEFAULT: "#FFF", 100: "#F2F2F2" },
+      },
     },
-    extend: {},
   },
   plugins: [],
 };
