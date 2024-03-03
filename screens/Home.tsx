@@ -4,9 +4,11 @@ import {
   Text,
   TextInput,
   ScrollView,
+  Image,
 } from "react-native";
 import React, { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import FoodList from "./FoodList";
 const Home = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const foodItems = [
@@ -19,48 +21,52 @@ const Home = () => {
     "Snacks",
     "Sauce",
   ];
-  return (
-    <View className="h-full p-10">
-      <View className="flex flex-row justify-between items-center">
-        <TouchableOpacity>
-          <Ionicons name="menu" size={32} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="cart-outline" size={32} />
-        </TouchableOpacity>
-      </View>
-      <View className="w-[70%] py-10">
-        <Text className="text-4xl font-bold">Delicious food for you</Text>
-      </View>
-      <View className="flex flex-row gap-x-3 items-center h-12 bg-white/70 rounded-full">
-        <Ionicons name="search" size={24} />
-        <TextInput placeholder="Search" className="text-base w-full" />
-      </View>
 
-      <View>
-        <ScrollView horizontal className="flex gap-x-10">
-          {foodItems.map((item, i) => (
-            <TouchableOpacity
-              onPress={() => setSelectedIndex(i)}
-              className="py-3"
-              key={i}
-            >
-              <Text
-                className={`${
-                  selectedIndex === i ? "text-originPrimary" : "text-black/50"
-                } px-5 py-3`}
+  return (
+    <View className="h-full flex">
+      <View className="px-10 py-5">
+        <View className="flex flex-row justify-between items-center">
+          <TouchableOpacity>
+            <Ionicons name="menu" size={32} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Ionicons name="cart-outline" size={32} />
+          </TouchableOpacity>
+        </View>
+        <View className="w-[70%] py-10">
+          <Text className="text-4xl font-bold">Delicious food for you</Text>
+        </View>
+        <View className="flex flex-row gap-x-3 items-center h-12 bg-white/70 rounded-full">
+          <Ionicons name="search" size={24} />
+          <TextInput placeholder="Search" className="text-base w-full" />
+        </View>
+
+        <View>
+          <ScrollView horizontal className="flex gap-x-10">
+            {foodItems.map((item, i) => (
+              <TouchableOpacity
+                onPress={() => setSelectedIndex(i)}
+                className="py-3"
+                key={i}
               >
-                {item}
-              </Text>
-              <View
-                className={
-                  selectedIndex === i ? "h-1 w-full bg-originPrimary" : " "
-                }
-              />
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+                <Text
+                  className={`${
+                    selectedIndex === i ? "text-originPrimary" : "text-black/50"
+                  } px-5 py-3`}
+                >
+                  {item}
+                </Text>
+                <View
+                  className={
+                    selectedIndex === i ? "h-1 w-full bg-originPrimary" : " "
+                  }
+                />
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
       </View>
+      <FoodList />
     </View>
   );
 };
