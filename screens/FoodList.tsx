@@ -1,5 +1,13 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  FlatList,
+} from "react-native";
 import React, { useState } from "react";
+import Box from "../components/Box";
 
 const FoodList = () => {
   const FoodList = [
@@ -35,27 +43,35 @@ const FoodList = () => {
     },
   ];
   return (
-    <View className="flex ">
+    <View className=" ">
       <View className="flex flex-row justify-end px-10">
         <TouchableOpacity>
           <Text className="text-originPrimary">see more</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView horizontal className="flex py-16 flex-row  gap-x-4">
-        {FoodList.map((items) => (
-          <View key={items.id} className="flex  items-center justify-end  h-60">
-            <View className="rounded-full absolute -top-12 z-10">
-              <Image source={items.img} className="rounded-full" />
+      <View className="py-3">
+        <FlatList
+          horizontal
+          data={FoodList}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(i) => i.id.toString()}
+          renderItem={(items) => (
+            <View className="flex items-center mx-4 overflow-visible justify-end relative h-72">
+              <View className="rounded-full absolute top-0 z-10">
+                <Image source={items.item.img} className="rounded-full" />
+              </View>
+              <Box className=" rounded-2xl  flex flex-col justify-end items-center h-[80%] px-6 gap-y-3">
+                <Text className=" text-center text-xl font-bold">
+                  {items.item.foodName}
+                </Text>
+                <Text className="text-originPrimary font-bold">
+                  {items.item.info}
+                </Text>
+              </Box>
             </View>
-            <View className="bg-white rounded-2xl  flex flex-col justify-end gap-y-3 items-center h-full  px-5 pb-6 ">
-              <Text className="w-[70%] text-center text-xl font-bold leading-6">
-                {items.foodName}
-              </Text>
-              <Text className="text-originPrimary font-bold">{items.info}</Text>
-            </View>
-          </View>
-        ))}
-      </ScrollView>
+          )}
+        />
+      </View>
     </View>
   );
 };

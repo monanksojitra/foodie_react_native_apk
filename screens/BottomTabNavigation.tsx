@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { View, Pressable, Dimensions, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Box from "../components/Box";
 
 export const BottomTabNavigation = ({
   state,
@@ -9,7 +10,7 @@ export const BottomTabNavigation = ({
 }: any) => {
   const bottomNavigationItems = ["home", "heart", "person", "time"];
   return (
-    <SafeAreaView className="px-10 py-5 flex flex-row justify-between bg-white-100">
+    <Box className=" flex flex-row items-center justify-between bg-white-100">
       {state.routes.map((route: any, index: number) => {
         const isFocused = state.index === index;
 
@@ -40,6 +41,6 @@ export const BottomTabNavigation = ({
           </Pressable>
         );
       })}
-    </SafeAreaView>
+    </Box>
   );
 };

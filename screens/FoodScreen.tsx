@@ -2,18 +2,11 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import Button from "../components/Button";
 
 const FoodScreen = () => {
   return (
     <SafeAreaView className="flex ">
-      <View className="flex p-10 flex-row justify-between">
-        <TouchableOpacity>
-          <Ionicons name="arrow-back" size={26} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="heart-outline" size={22} />
-        </TouchableOpacity>
-      </View>
       <View className="flex items-center justify-center">
         <View>
           <Image
@@ -50,9 +43,7 @@ const FoodScreen = () => {
         </View>
       </View>
       <View className="flex items-center justify-center">
-        <TouchableOpacity className="bg-originPrimary flex items-center justify-center w-[80%] h-14 rounded-full">
-          <Text className="text-white">Add to cart</Text>
-        </TouchableOpacity>
+        <Button onPress={() => {}} title="Add to cart" />
       </View>
     </SafeAreaView>
   );
