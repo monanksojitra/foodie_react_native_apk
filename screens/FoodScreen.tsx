@@ -6,7 +6,7 @@ import Button from "../components/Button";
 
 const FoodScreen = () => {
   return (
-    <SafeAreaView className="flex ">
+    <SafeAreaView className="">
       <View className="flex items-center justify-center">
         <View>
           <Image

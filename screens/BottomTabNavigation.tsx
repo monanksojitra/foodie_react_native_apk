@@ -3,11 +3,7 @@ import { View, Pressable, Dimensions, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Box from "../components/Box";
 
-export const BottomTabNavigation = ({
-  state,
-  descriptors,
-  navigation,
-}: any) => {
+export const BottomTabNavigation = ({ state, navigation }: any) => {
   const bottomNavigationItems = ["home", "heart", "person", "time"];
   return (
     <Box className=" flex flex-row items-center justify-between bg-white-100">
@@ -27,7 +23,7 @@ export const BottomTabNavigation = ({
 
         return (
           <Pressable onPress={onPress} key={index}>
-            <View>
+            <View className="px-5 py-3">
               <Ionicons
                 size={30}
                 color={isFocused ? "#FA4A0C" : "#ADADAF"}

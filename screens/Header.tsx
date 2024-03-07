@@ -1,17 +1,28 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { cn } from "../util/Cn";
 
-const Header = ({ title = "", icon = "" }) => {
+const Header = ({
+  title = "",
+  icon = "",
+  className = "",
+  onpress = () => {},
+}) => {
   return (
-    <View className="flex px-10 pt-16 flex-row justify-between items-center">
+    <View
+      className={cn(
+        "flex px-10 flex-row pt-8 justify-between items-center",
+        className
+      )}
+    >
       <TouchableOpacity>
         <Ionicons name="arrow-back" size={26} />
       </TouchableOpacity>
       <Text className="text-lg font-semibold">{title}</Text>
 
-      <TouchableOpacity onPress={() => console.log("press")}>
-        <Ionicons name={icon} size={22} />
+      <TouchableOpacity onPress={onpress}>
+        <Ionicons name={icon} size={26} />
       </TouchableOpacity>
     </View>
   );

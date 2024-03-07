@@ -8,40 +8,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import Box from "../components/Box";
+import { foodList } from "../util/Data";
 
 const FoodList = () => {
-  const FoodList = [
-    {
-      id: 2,
-      img: require("../assets/food1.png"),
-      foodName: "Spicy fish sauce",
-      info: "N2,300.99",
-    },
-    {
-      id: 3,
-      img: require("../assets/food1.png"),
-      foodName: "Spicy fish sauce",
-      info: "N2,300.99",
-    },
-    {
-      id: 4,
-      img: require("../assets/food1.png"),
-      foodName: "Spicy fish sauce",
-      info: "N2,300.99",
-    },
-    {
-      id: 5,
-      img: require("../assets/food1.png"),
-      foodName: "Spicy fish sauce",
-      info: "N2,300.99",
-    },
-    {
-      id: 6,
-      img: require("../assets/food1.png"),
-      foodName: "Spicy fish sauce",
-      info: "N2,300.99",
-    },
-  ];
   return (
     <View className=" ">
       <View className="flex flex-row justify-end px-10">
@@ -52,7 +21,7 @@ const FoodList = () => {
       <View className="py-3">
         <FlatList
           horizontal
-          data={FoodList}
+          data={foodList}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(i) => i.id.toString()}
           renderItem={(items) => (

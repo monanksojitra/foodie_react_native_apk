@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FoodList from "./FoodList";
 import Box from "../components/Box";
-const Home = () => {
+const Home = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const foodItems = [
     "Foods",
@@ -28,10 +28,10 @@ const Home = () => {
     <View className="h-full flex">
       <View className="px-10 py-5">
         <View className="flex flex-row justify-between items-center pt-10">
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <Ionicons name="menu" size={32} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("cart")}>
             <Ionicons name="cart-outline" size={32} />
           </TouchableOpacity>
         </View>
