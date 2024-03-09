@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, ReactNode } from "react";
 import { ImageProps } from "react-native";
 
 // Define interfaces for Food and CartItem
@@ -40,7 +40,7 @@ const FoodContext = createContext<FoodContextType>({
 });
 
 // Create the context provider component
-export const FoodProvider: React.FC = ({ children }) => {
+export const FoodProvider = ({ children }) => {
   const [foodData, setFoodData] = useState<Food[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [linkedFood, setLinkedFood] = useState<Food[]>([]);

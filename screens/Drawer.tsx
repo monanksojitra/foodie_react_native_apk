@@ -35,7 +35,12 @@ export const TabNav = ({ navigation }) => {
         name="foodscreen"
         component={FoodScreen}
         options={{
-          header: () => <Header icon="heart-outline" />,
+          header: () => (
+            <Header
+              icon="heart-outline"
+              onpressback={() => navigation.navigate("home")}
+            />
+          ),
         }}
       />
       <Tab.Screen

@@ -35,9 +35,15 @@ const SearchFood = ({ navigation }) => {
           data={foodList}
           showsVerticalScrollIndicator={false}
           renderItem={(items) => (
-            <View
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("foodscreen", {
+                  data: items,
+                  Header: false,
+                })
+              }
               key={items.item.id}
-              className="flex  items-center px-2 mt-5 overflow-visible justify-end h-64"
+              className="flex  items-center px-2 mt-5 overflow-visible justify-end h-[270px]"
             >
               <View className="rounded-full absolute top-0 z-10">
                 <Image
@@ -45,15 +51,18 @@ const SearchFood = ({ navigation }) => {
                   className="rounded-full h-32 aspect-square"
                 />
               </View>
-              <Box className=" rounded-2xl shadow-xl shadow-black/60 flex flex-col justify-end items-center h-[80%] px-2 gap-y-3">
-                <Text className=" text-center w-40  text-xl font-bold">
+              <Box className=" rounded-2xl shadow-xl shadow-black/60 flex flex-col justify-end items-center h-[80%] px-2 w-[45vw] gap-y-1">
+                <Text className=" text-center  text-xl font-bold">
                   {items.item.foodName}
                 </Text>
-                <Text className="text-originPrimary font-bold">
-                  {items.item.info}
+                <Text className="text-black/50 text-center font-bold">
+                  {items.item.description}
+                </Text>
+                <Text className="text-originPrimary text-center font-bold">
+                  {items.item.price} $
                 </Text>
               </Box>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>

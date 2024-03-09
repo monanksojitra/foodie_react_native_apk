@@ -15,11 +15,6 @@ const FoodScreen = ({ navigation, route }) => {
   }, [route.params.data.item]);
   return (
     <SafeAreaView className="">
-      <Header
-        icon="heart-outline"
-        className=""
-        onpressback={() => navigation.navigate("home")}
-      />
       <View className="flex py-5 items-center justify-center">
         <View>
           <Image
