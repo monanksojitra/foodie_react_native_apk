@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TextInput,
-  ScrollView,
   Image,
   FlatList,
 } from "react-native";
@@ -11,6 +10,8 @@ import React, { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FoodList from "./FoodList";
 import Box from "../components/Box";
+import { ScrollView } from "react-native-gesture-handler";
+import { foodList } from "../util/Data";
 const Home = ({ navigation }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const foodItems = [
@@ -25,7 +26,7 @@ const Home = ({ navigation }) => {
   ];
 
   return (
-    <View className="h-full flex">
+    <ScrollView className="h-full flex">
       <View className="px-10 py-5">
         <View className="flex flex-row justify-between items-center pt-10">
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -40,7 +41,11 @@ const Home = ({ navigation }) => {
         </View>
         <Box className="flex flex-row gap-x-3 items-center h-12 p-0 bg-white/70 rounded-full">
           <Ionicons name="search" size={24} />
-          <TextInput placeholder="Search" className="text-base w-full" />
+          <TextInput
+            placeholder="Search"
+            className="text-base w-full"
+            onFocus={() => navigation.navigate("searchFood")}
+          />
         </Box>
         <FlatList
           horizontal
@@ -71,8 +76,8 @@ const Home = ({ navigation }) => {
           )}
         />
       </View>
-      <FoodList />
-    </View>
+      <FoodList navigation={navigation} />
+    </ScrollView>
   );
 };
 

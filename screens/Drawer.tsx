@@ -1,30 +1,25 @@
 import * as React from "react";
-import { View, Text, useWindowDimensions } from "react-native";
+import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { createStackNavigator } from "@react-navigation/stack";
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-} from "@react-navigation/drawer";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./Home";
 import { BottomTabNavigation } from "./BottomTabNavigation";
 import EditProfile from "./EditProfile";
 import FoodScreen from "./FoodScreen";
-import Profile from "./Profile";
 import Header from "./Header";
 import History from "./History";
 
 const Tab = createBottomTabNavigator();
 
 const drawerList = [
-  { id: 1, icon: "user", title: "Profile" },
-  { id: 2, icon: "shoppingcart", title: "orders" },
-  { id: 3, icon: "tagso", title: "offer and promo" },
-  { id: 4, icon: "filetext1", title: "Privacy policy" },
-  { id: 5, icon: "lock", title: "Security" },
+  { id: 1, icon: "user", title: "Profile", route: "profile" },
+  { id: 2, icon: "shoppingcart", title: "orders", route: "cart" },
+  { id: 3, icon: "tagso", title: "offer and promo", route: "offers" },
+  { id: 4, icon: "filetext1", title: "Privacy policy", route: "privacy" },
+  { id: 5, icon: "lock", title: "Security", route: "security" },
 ];
-export const TabNav = () => {
+export const TabNav = ({ navigation }) => {
   return (
     <Tab.Navigator
       initialRouteName={"home"}
@@ -67,12 +62,16 @@ export const CustomDrawerContent = (props) => {
       <View className="h-screen bg-originPrimary flex justify-between py-10">
         <View className="p-10">
           {drawerList.map((item) => (
-            <View key={item.id} className="flex flex-row gap-3 items-center">
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate(item.route)}
+              key={item.id}
+              className="flex flex-row gap-3 items-center"
+            >
               <AntDesign name={item.icon} size={28} color="white" />
               <Text className="text-white text-base font-semibold border-b py-4 w-[70%] border-white/60">
                 {item.title}
               </Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
         <View className="flex flex-row gap-2 p-10">

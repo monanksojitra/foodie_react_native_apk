@@ -9,6 +9,9 @@ import Cart from "./screens/Cart";
 import Chechout from "./screens/Chechout";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { CustomDrawerContent, TabNav } from "./screens/Drawer";
+import SearchFood from "./screens/SearchFood";
+import FoodScreen from "./screens/FoodScreen";
+import { FoodProvider } from "./util/Context";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,15 +25,18 @@ NativeWindStyleSheet.setOutput({
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={(props) => <CustomDrawerContent {...props} />}
-        screenOptions={{ headerShown: false }}
-      >
-        <Drawer.Screen name="homeScreen" component={TabNav} />
-        <Drawer.Screen name="cart" component={Cart} />
-        <Drawer.Screen name="profile" component={Profile} />
-        <Drawer.Screen name="checkout" component={Chechout} />
-      </Drawer.Navigator>
+      <FoodProvider>
+        <Drawer.Navigator
+          drawerContent={(props) => <CustomDrawerContent {...props} />}
+          screenOptions={{ headerShown: false }}
+        >
+          <Drawer.Screen name="homeScreen" component={TabNav} />
+          <Drawer.Screen name="cart" component={Cart} />
+          <Drawer.Screen name="searchFood" component={SearchFood} />
+          <Drawer.Screen name="fooddata" component={FoodScreen} />
+          <Drawer.Screen name="profile" component={Profile} />
+        </Drawer.Navigator>
+      </FoodProvider>
     </NavigationContainer>
   );
 };

@@ -13,11 +13,11 @@ import FoodList from "./FoodList";
 import { foodList } from "../util/Data";
 import Box from "../components/Box";
 
-const SearchFood = () => {
+const SearchFood = ({ navigation }) => {
   return (
     <View className="h-full flex justify-between">
       <View className="flex px-10 pt-16 flex-row items-center gap-8">
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("home")}>
           <Ionicons name="arrow-back" size={26} />
         </TouchableOpacity>
         <TextInput

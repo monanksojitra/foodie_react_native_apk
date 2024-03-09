@@ -1,13 +1,26 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import Button from "../components/Button";
+import Header from "./Header";
+import { Food, useFoodContext } from "../util/Context";
 
-const FoodScreen = () => {
+const FoodScreen = ({ navigation, route }) => {
+  const { addToCart } = useFoodContext();
+  const [foodData, setFoodData] = useState<Food>(route.params.data.item);
+  useEffect(() => {
+    console.log(route.params.data.item);
+    setFoodData(route.params.data.item);
+  }, [route.params.data.item]);
   return (
     <SafeAreaView className="">
-      <View className="flex items-center justify-center">
+      <Header
+        icon="heart-outline"
+        className=""
+        onpressback={() => navigation.navigate("home")}
+      />
+      <View className="flex py-5 items-center justify-center">
         <View>
           <Image
             className="rounded-full"
@@ -20,14 +33,17 @@ const FoodScreen = () => {
           <View className="h-2 aspect-square bg-gray-300 rounded-full"></View>
           <View className="h-2 aspect-square bg-gray-300 rounded-full"></View>
         </View>
-        <View className="flex gap-y-2 items-center justify-center">
-          <Text className="text-2xl font-semibold">Veggie tomato mix</Text>
-          <Text className="text-xl font-semibold text-originPrimary">
-            N1,900
+        <View className="flex gap-y-2 items-center justify-center px-10">
+          <Text className="text-2xl font-semibold">{foodData.foodName}</Text>
+          <Text className="text-xl font-semibold text-black/50 text-center">
+            {foodData.description}
+          </Text>
+          <Text className="text-xl font-semibold text-originPrimary text-center">
+            {foodData.price} $
           </Text>
         </View>
       </View>
-      <View className="p-10 space-y-5">
+      <View className="p-10 space-y-4">
         <View className="pr-3">
           <Text className="text-base font-semibold ">Delivery info</Text>
           <Text className="text-sm font-normal opacity-30">
@@ -43,7 +59,7 @@ const FoodScreen = () => {
         </View>
       </View>
       <View className="flex items-center justify-center">
-        <Button onPress={() => {}} title="Add to cart" />
+        <Button onPress={() => addToCart(foodData)} title="Add to cart" />
       </View>
     </SafeAreaView>
   );

@@ -7,7 +7,7 @@ const Header = ({
   title = "",
   icon = "",
   className = "",
-  onpress = () => {},
+  onpressback = () => {},
 }) => {
   return (
     <View
@@ -16,12 +16,12 @@ const Header = ({
         className
       )}
     >
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onpressback}>
         <Ionicons name="arrow-back" size={26} />
       </TouchableOpacity>
       <Text className="text-lg font-semibold">{title}</Text>
 
-      <TouchableOpacity onPress={onpress}>
+      <TouchableOpacity>
         <Ionicons name={icon} size={26} />
       </TouchableOpacity>
     </View>
