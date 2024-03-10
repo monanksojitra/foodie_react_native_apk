@@ -6,22 +6,17 @@ import { cn } from "../util/Cn";
 const Header = ({
   title = "",
   icon = "",
-  className = "",
+  iconclick = () => {},
   onpressback = () => {},
 }) => {
   return (
-    <View
-      className={cn(
-        "flex px-10 flex-row pt-8 justify-between items-center",
-        className
-      )}
-    >
+    <View className="flex px-10 py-4 flex-row justify-between items-center ">
       <TouchableOpacity onPress={onpressback}>
         <Ionicons name="arrow-back" size={26} />
       </TouchableOpacity>
       <Text className="text-lg font-semibold">{title}</Text>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={iconclick}>
         <Ionicons name={icon} size={26} />
       </TouchableOpacity>
     </View>

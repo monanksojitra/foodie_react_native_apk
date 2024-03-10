@@ -7,14 +7,18 @@ import Header from "./Header";
 import { Food, useFoodContext } from "../util/Context";
 
 const FoodScreen = ({ navigation, route }) => {
-  const { addToCart } = useFoodContext();
+  const { addToCart, addLikeFood } = useFoodContext();
   const [foodData, setFoodData] = useState<Food>(route.params.data.item);
   useEffect(() => {
-    console.log(route.params.data.item);
     setFoodData(route.params.data.item);
   }, [route.params.data.item]);
   return (
     <SafeAreaView className="">
+      <Header
+        iconclick={() => addLikeFood(foodData)}
+        icon="heart-outline"
+        onpressback={() => navigation.navigate("homeScreen")}
+      />
       <View className="flex py-5 items-center justify-center">
         <View>
           <Image

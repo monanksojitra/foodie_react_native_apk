@@ -1,11 +1,10 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
-import { ImageProps } from "react-native";
 
 // Define interfaces for Food and CartItem
 export interface Food {
   id: string;
   foodName: string;
-  img: ImageProps;
+  img: string;
   description: string;
   price: string;
 }
@@ -23,8 +22,8 @@ interface FoodContextType {
   removeFromCart: (foodId: string) => void;
   increaseQuantity: (foodId: string) => void;
   decreaseQuantity: (foodId: string) => void;
-  linkedFood: Food | null;
-  setLinkedFood: (food: Food) => void;
+  likeFood: Food[];
+  addLikeFood: (food: Food) => void;
 }
 
 // Create the context
@@ -35,15 +34,15 @@ const FoodContext = createContext<FoodContextType>({
   removeFromCart: () => {},
   increaseQuantity: () => {},
   decreaseQuantity: () => {},
-  linkedFood: null,
-  setLinkedFood: () => {},
+  likeFood: [],
+  addLikeFood: () => {},
 });
 
 // Create the context provider component
 export const FoodProvider = ({ children }) => {
   const [foodData, setFoodData] = useState<Food[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [linkedFood, setLinkedFood] = useState<Food[]>([]);
+  const [likeFood, setlikeFood] = useState<Food[]>([]);
 
   // Method to add food to the cart
   const addToCart = (food: Food) => {
@@ -82,6 +81,13 @@ export const FoodProvider = ({ children }) => {
     setCart(updatedCart.filter((item) => item.quantity > 0));
   };
 
+  // Method to add linked food
+  const addLikeFood = (food: Food) => {
+    if (!likeFood.find((f) => f.id === food.id)) {
+      setlikeFood([...likeFood, food]);
+    }
+  };
+
   return (
     <FoodContext.Provider
       value={{
@@ -91,8 +97,8 @@ export const FoodProvider = ({ children }) => {
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
-        linkedFood,
-        setLinkedFood,
+        likeFood,
+        addLikeFood,
       }}
     >
       {children}

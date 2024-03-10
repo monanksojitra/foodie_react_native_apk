@@ -65,7 +65,10 @@ const Cart = ({ navigation }) => {
               )}
               renderHiddenItem={() => (
                 <View className="flex flex-row justify-end items-center h-full space-x-2">
-                  <TouchableOpacity className="bg-[#DF2C2C] h-10 aspect-square rounded-full flex items-center justify-center">
+                  <TouchableOpacity
+                    onPress={() => {}}
+                    className="bg-[#DF2C2C] h-10 aspect-square rounded-full flex items-center justify-center"
+                  >
                     <AntDesign name="hearto" size={20} color="white" />
                   </TouchableOpacity>
                   <TouchableOpacity className="bg-[#DF2C2C] h-10 aspect-square rounded-full flex items-center justify-center">

@@ -1,17 +1,12 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import Button from "../components/Button";
 import Box from "../components/Box";
+import Header from "./Header";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const optionList = [
     { id: 1, label: "Orders", route: "/" },
     { id: 2, label: "Pending reviews", route: "/" },
@@ -19,7 +14,11 @@ const Profile = () => {
     { id: 4, label: "Help", route: "/" },
   ];
   return (
-    <ScrollView>
+    <SafeAreaView>
+      <Header
+        title="Profile"
+        onpressback={() => navigation.navigate("homeScreen")}
+      />
       <View className="p-10">
         <View className="px-3">
           <Text className="text-3xl font-semibold">My profile</Text>
@@ -69,7 +68,7 @@ const Profile = () => {
           <Button onPress={() => {}} title="Update" />
         </View>
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 

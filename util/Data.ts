@@ -141,3 +141,88 @@ export const foodList = [
     price: "10.99",
   },
 ];
+
+export const offerAndPromoCode = [
+  {
+    id: "FOOD123",
+    name: "TastyTreats",
+    description: "Get 20% off on your next order with code TASTY20",
+  },
+  {
+    id: "YUMMY456",
+    name: "YumDelight",
+    description:
+      "Enjoy a free dessert with every purchase over $30 using code SWEETDEAL",
+  },
+  {
+    id: "DELISH789",
+    name: "DelishDine",
+    description:
+      "Get $10 off on your first order of $50 or more with code FIRST10",
+  },
+  {
+    id: "TASTE987",
+    name: "TasteBuds",
+    description: "Buy one, get one free on select items using code BOGO21",
+  },
+  {
+    id: "SAVOR654",
+    name: "SavorMeals",
+    description:
+      "Get 15% off on all orders for a limited time with code SAVOR15",
+  },
+  {
+    id: "CRUNCHY321",
+    name: "CrunchyBites",
+    description:
+      "Enjoy a free appetizer with your order over $25 with code APPETIZER",
+  },
+  {
+    id: "YUMTREATS234",
+    name: "YumTreats",
+    description: "Get $5 off on your next purchase using code YUM5OFF",
+  },
+  {
+    id: "TASTYPIZZA567",
+    name: "TastyPizza",
+    description: "Get 25% off on all pizzas with code PIZZA25",
+  },
+  {
+    id: "SWEETTOOTH876",
+    name: "SweetTooth",
+    description:
+      "Enjoy a free ice cream cone with every order over $15 using code ICECREAM",
+  },
+  {
+    id: "HEALTHYEATS098",
+    name: "HealthyEats",
+    description:
+      "Get a salad bowl for half price with the purchase of any main dish using code SALAD50",
+  },
+  {
+    id: "HUNGRY202",
+    name: "HungryBelly",
+    description:
+      "Get a free side dish with every meal order using code SIDESFREE",
+  },
+  {
+    id: "TASTYBURGER444",
+    name: "TastyBurger",
+    description: "Enjoy $3 off on any burger combo using code BURGER3OFF",
+  },
+  {
+    id: "CHEESELOVER777",
+    name: "CheeseLover",
+    description: "Buy two cheese items and get one free using code CHEESYDEAL",
+  },
+  {
+    id: "SPICYMEALS555",
+    name: "SpicyMeals",
+    description: "Get 20% off on all spicy dishes with code SPICE20",
+  },
+  {
+    id: "HAPPYHOUR999",
+    name: "HappyHour",
+    description: "Enjoy happy hour prices all day long with code HAPPY999",
+  },
+];

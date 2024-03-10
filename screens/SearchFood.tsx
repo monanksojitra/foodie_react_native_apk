@@ -36,12 +36,7 @@ const SearchFood = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
           renderItem={(items) => (
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("foodscreen", {
-                  data: items,
-                  Header: false,
-                })
-              }
+              onPress={() => navigation.navigate("foodscreen", items)}
               key={items.item.id}
               className="flex  items-center px-2 mt-5 overflow-visible justify-end h-[270px]"
             >
