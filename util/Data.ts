@@ -246,3 +246,5 @@ export const offerAndPromoCode = [
     description: "Enjoy happy hour prices all day long with code HAPPY999",
   },
 ];
+
+export const history = [];

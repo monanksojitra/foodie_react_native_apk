@@ -15,6 +15,10 @@ const Profile = ({ navigation }) => {
   ];
   return (
     <SafeAreaView>
+      <Header
+        title="Profile"
+        onpressback={() => navigation.navigate("homeScreen")}
+      />
       <View className="p-10">
         <View className="px-3">
           <Text className="text-3xl font-semibold">My profile</Text>

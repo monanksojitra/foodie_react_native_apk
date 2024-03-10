@@ -6,8 +6,9 @@ import { RadioButton } from "react-native-paper";
 import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 import Button from "../components/Button";
 import Box from "../components/Box";
+import Header from "./Header";
 
-const EditProfile = () => {
+const EditProfile = ({ navigation }) => {
   const [selectionRadio, setSelectionRadio] = useState(0);
   const paymentList = [
     { id: 1, bgColor: "#F47B0A", icon: "credit-card", title: "Card" },
@@ -15,8 +16,12 @@ const EditProfile = () => {
     { id: 3, bgColor: "#0038FF", icon: "paypal", title: "Paypal" },
   ];
   return (
-    <SafeAreaView className="flex gap-y-8">
-      <View className="px-10">
+    <SafeAreaView className="">
+      <Header
+        title="Profile"
+        onpressback={() => navigation.navigate("homeScreen")}
+      />
+      <View className="px-10 flex gap-y-3">
         <Text className="text-base py-2 font-semibold">Information</Text>
         <Box className="rounded-3xl flex flex-row   justify-between">
           <View className="h-16 rounded-2xl aspect-square">
@@ -41,7 +46,7 @@ const EditProfile = () => {
           </TouchableOpacity>
         </Box>
       </View>
-      <View className="px-10">
+      <View className="px-10 mt-4">
         <Text className="text-base pb-5 font-semibold">Payment Method</Text>
         <Box className=" rounded-3xl flex">
           {paymentList.map((item) => (
@@ -68,7 +73,7 @@ const EditProfile = () => {
           ))}
         </Box>
       </View>
-      <View className="flex items-center justify-center">
+      <View className="flex items-center justify-center mt-5">
         <Button onPress={() => {}} title="Updatet" />
       </View>
     </SafeAreaView>

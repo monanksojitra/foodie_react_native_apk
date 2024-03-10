@@ -27,7 +27,7 @@ import Checkout from "./screens/Checkout";
 const Tab = createBottomTabNavigator();
 
 const drawerList = [
-  { id: 1, icon: "user", title: "Profile", route: "profile" },
+  { id: 1, icon: "user", title: "Profile", route: "editprofile" },
   { id: 2, icon: "shoppingcart", title: "orders", route: "cart" },
   { id: 3, icon: "tagso", title: "offer and promo", route: "offers" },
   { id: 4, icon: "filetext1", title: "Privacy policy", route: "privacy" },
@@ -104,19 +104,8 @@ const App = () => {
             <Drawer.Screen name="searchFood" component={SearchFood} />
             <Drawer.Screen name="foodscreen" component={FoodScreen} />
             <Drawer.Screen name="fooddata" component={FoodScreen} />
-            <Drawer.Screen
-              name="profile"
-              component={Profile}
-              options={{
-                headerShown: true,
-                header: () => (
-                  <Header
-                    title="Profile"
-                    onpressback={() => navigation.navigate("homeScreen")}
-                  />
-                ),
-              }}
-            />
+            <Drawer.Screen name="profile" component={Profile} />
+            <Drawer.Screen name="editprofile" component={EditProfile} />
             <Drawer.Screen name="offers" component={OfferAndPromo} />
             <Drawer.Screen name="delivery" component={DeliveryAddress} />
             <Drawer.Screen name="checkout" component={Checkout} />
