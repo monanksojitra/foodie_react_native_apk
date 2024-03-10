@@ -1,10 +1,12 @@
 import React, { createContext, useState, useContext } from "react";
+import { ImageProps } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 // Define interfaces for Food and CartItem
 export interface Food {
   id: string;
   foodName: string;
-  img: string;
+  img: ImageProps | Readonly<ImageProps>;
   description: string;
   price: string;
 }

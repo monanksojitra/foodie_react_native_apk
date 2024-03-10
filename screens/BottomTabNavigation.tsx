@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Box from "../components/Box";
 
 export const BottomTabNavigation = ({ state, navigation }: any) => {
-  const bottomNavigationItems = ["home", "heart", "person", "time"];
+  const bottomNavigationItems = ["home", "heart", "time", "person"];
   return (
     <Box className=" flex flex-row items-center justify-between bg-white-100">
       {state.routes.map((route: any, index: number) => {

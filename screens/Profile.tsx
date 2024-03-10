@@ -15,10 +15,6 @@ const Profile = ({ navigation }) => {
   ];
   return (
     <SafeAreaView>
-      <Header
-        title="Profile"
-        onpressback={() => navigation.navigate("homeScreen")}
-      />
       <View className="p-10">
         <View className="px-3">
           <Text className="text-3xl font-semibold">My profile</Text>
@@ -63,9 +59,6 @@ const Profile = ({ navigation }) => {
               </TouchableOpacity>
             </Box>
           ))}
-        </View>
-        <View className="flex items-center justify-center py-7">
-          <Button onPress={() => {}} title="Update" />
         </View>
       </View>
     </SafeAreaView>

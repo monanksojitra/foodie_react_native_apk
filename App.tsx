@@ -21,6 +21,8 @@ import History from "./screens/History";
 import FevFoodList from "./screens/FevFoodList";
 import { SafeAreaView } from "react-native-safe-area-context";
 import OfferAndPromo from "./screens/OfferAndPromo";
+import DeliveryAddress from "./screens/DeliveryAddress";
+import Checkout from "./screens/Checkout";
 
 const Tab = createBottomTabNavigator();
 
@@ -40,8 +42,8 @@ const TabNav = ({ navigation }) => {
     >
       <Tab.Screen name="home" component={Home} />
       <Tab.Screen name="likedfood" component={FevFoodList} />
-      <Tab.Screen name="profileEdit" component={EditProfile} />
       <Tab.Screen name="history" component={History} />
+      <Tab.Screen name="profile" component={Profile} />
     </Tab.Navigator>
   );
 };
@@ -102,8 +104,22 @@ const App = () => {
             <Drawer.Screen name="searchFood" component={SearchFood} />
             <Drawer.Screen name="foodscreen" component={FoodScreen} />
             <Drawer.Screen name="fooddata" component={FoodScreen} />
-            <Drawer.Screen name="profile" component={Profile} />
+            <Drawer.Screen
+              name="profile"
+              component={Profile}
+              options={{
+                headerShown: true,
+                header: () => (
+                  <Header
+                    title="Profile"
+                    onpressback={() => navigation.navigate("homeScreen")}
+                  />
+                ),
+              }}
+            />
             <Drawer.Screen name="offers" component={OfferAndPromo} />
+            <Drawer.Screen name="delivery" component={DeliveryAddress} />
+            <Drawer.Screen name="checkout" component={Checkout} />
           </Drawer.Navigator>
         </FoodProvider>
       </NavigationContainer>

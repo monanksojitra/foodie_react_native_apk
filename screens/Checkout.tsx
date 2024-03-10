@@ -7,7 +7,7 @@ import { RadioButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import Button from "../components/Button";
 
-const Chechout = () => {
+const Checkout = ({ navigation }) => {
   const [selectionRadio, setSelectionRadio] = useState(0);
   const [method, setMethod] = useState(0);
   const deliveryType = [
@@ -20,11 +20,14 @@ const Chechout = () => {
     { id: 3, bgColor: "#0038FF", icon: "paypal", title: "Paypal" },
   ];
   return (
-    <SafeAreaView>
-      <Header title="Chechout" />
+    <SafeAreaView className="h-full">
+      <Header
+        title="Checkout"
+        onpressback={() => navigation.navigate("delivery")}
+      />
       <ScrollView>
         <View className="px-10">
-          <View className="py-14">
+          <View className="py-9">
             <Text className="text-4xl font-bold">Payment</Text>
           </View>
           <View className="pb-5">
@@ -89,7 +92,7 @@ const Chechout = () => {
             <Text className="text-xl font-semibold">23,000</Text>
           </View>
         </View>
-        <View className="w-full flex items-center justify-center">
+        <View className="w-full flex items-center justify-center mb-5">
           <Button onPress={() => {}} title="Proceed to payment" />
         </View>
       </ScrollView>
@@ -97,4 +100,4 @@ const Chechout = () => {
   );
 };
 
-export default Chechout;
+export default Checkout;

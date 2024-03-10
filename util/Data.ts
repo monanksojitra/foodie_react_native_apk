@@ -5,6 +5,7 @@ export const foodList = [
     foodName: "Burger",
     description: "Juicy beef patty with fresh lettuce and tomatoes",
     price: "9.99",
+    isLike: false,
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ export const foodList = [
     foodName: "Pizza",
     description: "Delicious cheese and pepperoni on a thin crust",
     price: "12.99",
+    isLike: false,
   },
   {
     id: "3",
@@ -19,6 +21,7 @@ export const foodList = [
     foodName: "Sushi",
     description: "Fresh raw fish on a bed of seasoned rice",
     price: "15.99",
+    isLike: false,
   },
   {
     id: "4",
@@ -26,6 +29,7 @@ export const foodList = [
     foodName: "Taco",
     description: "Crispy corn tortilla filled with seasoned ground beef",
     price: "8.99",
+    isLike: false,
   },
   {
     id: "5",
@@ -33,6 +37,7 @@ export const foodList = [
     foodName: "Pasta",
     description: "Al dente spaghetti with a rich tomato sauce",
     price: "10.99",
+    isLike: false,
   },
   {
     id: "6",
@@ -40,6 +45,7 @@ export const foodList = [
     foodName: "Salad",
     description: "Mixed greens with assorted fresh vegetables",
     price: "7.99",
+    isLike: false,
   },
   {
     id: "7",
@@ -47,6 +53,7 @@ export const foodList = [
     foodName: "Sushi Roll",
     description: "Sliced raw fish and vegetables wrapped in seaweed",
     price: "9.99",
+    isLike: false,
   },
   {
     id: "8",
@@ -54,6 +61,7 @@ export const foodList = [
     foodName: "Chicken Wings",
     description: "Crispy and spicy chicken wings with a side of ranch",
     price: "11.99",
+    isLike: false,
   },
   {
     id: "9",
@@ -61,6 +69,7 @@ export const foodList = [
     foodName: "Steak",
     description: "Tender and juicy grilled steak with mashed potatoes",
     price: "19.99",
+    isLike: false,
   },
   {
     id: "10",
@@ -68,6 +77,7 @@ export const foodList = [
     foodName: "Fried Rice",
     description: "Stir-fried rice with vegetables and your choice of meat",
     price: "8.99",
+    isLike: false,
   },
   {
     id: "11",
@@ -75,6 +85,7 @@ export const foodList = [
     foodName: "Burrito",
     description: "Large flour tortilla filled with beans, rice, and meat",
     price: "9.99",
+    isLike: false,
   },
   {
     id: "12",
@@ -82,6 +93,7 @@ export const foodList = [
     foodName: "Sushi Platter",
     description: "Assortment of sushi rolls and sashimi",
     price: "24.99",
+    isLike: false,
   },
   {
     id: "13",
@@ -89,6 +101,7 @@ export const foodList = [
     foodName: "Fish and Chips",
     description: "Crispy battered fish with a side of fries",
     price: "13.99",
+    isLike: false,
   },
   {
     id: "14",
@@ -96,6 +109,7 @@ export const foodList = [
     foodName: "Pho",
     description: "Vietnamese noodle soup with beef or chicken",
     price: "10.99",
+    isLike: false,
   },
   {
     id: "15",
@@ -104,6 +118,7 @@ export const foodList = [
     description:
       "Grilled chicken on a bed of romaine lettuce with Caesar dressing",
     price: "8.99",
+    isLike: false,
   },
   {
     id: "16",
@@ -111,6 +126,7 @@ export const foodList = [
     foodName: "Ramen",
     description: "Japanese noodle soup with various toppings",
     price: "11.99",
+    isLike: false,
   },
   {
     id: "17",
@@ -118,6 +134,7 @@ export const foodList = [
     foodName: "Shrimp Scampi",
     description: "Garlic butter shrimp served with pasta",
     price: "14.99",
+    isLike: false,
   },
   {
     id: "18",
@@ -125,6 +142,7 @@ export const foodList = [
     foodName: "Chicken Tikka Masala",
     description: "Spicy Indian curry with grilled chicken and rice",
     price: "12.99",
+    isLike: false,
   },
   {
     id: "19",
@@ -132,6 +150,7 @@ export const foodList = [
     foodName: "Gyros",
     description: "Greek pita wrap with seasoned meat and tzatziki sauce",
     price: "9.99",
+    isLike: false,
   },
   {
     id: "20",
@@ -139,6 +158,7 @@ export const foodList = [
     foodName: "Pad Thai",
     description: "Thai stir-fried noodles with peanuts and lime",
     price: "10.99",
+    isLike: false,
   },
 ];
 

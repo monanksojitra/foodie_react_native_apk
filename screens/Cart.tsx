@@ -9,7 +9,13 @@ import Button from "../components/Button";
 import { useFoodContext } from "../util/Context";
 
 const Cart = ({ navigation }) => {
-  const { cart, increaseQuantity, decreaseQuantity } = useFoodContext();
+  const {
+    cart,
+    increaseQuantity,
+    decreaseQuantity,
+    addLikeFood,
+    removeFromCart,
+  } = useFoodContext();
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -66,15 +72,18 @@ const Cart = ({ navigation }) => {
                   </View>
                 </Box>
               )}
-              renderHiddenItem={() => (
+              renderHiddenItem={(item) => (
                 <View className="flex flex-row justify-end items-center h-full space-x-2">
                   <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={() => addLikeFood(item.item.food)}
                     className="bg-[#DF2C2C] h-10 aspect-square rounded-full flex items-center justify-center"
                   >
                     <AntDesign name="hearto" size={20} color="white" />
                   </TouchableOpacity>
-                  <TouchableOpacity className="bg-[#DF2C2C] h-10 aspect-square rounded-full flex items-center justify-center">
+                  <TouchableOpacity
+                    onPress={() => removeFromCart(item.item.food.id)}
+                    className="bg-[#DF2C2C] h-10 aspect-square rounded-full flex items-center justify-center"
+                  >
                     <MaterialIcons
                       name="delete-outline"
                       size={24}
@@ -89,7 +98,10 @@ const Cart = ({ navigation }) => {
             />
 
             <View className="flex items-center justify-center">
-              <Button onPress={() => {}} title={"Complete order"} />
+              <Button
+                onPress={() => navigation.navigate("delivery")}
+                title="Proceed to payment"
+              />
             </View>
           </View>
         </>
