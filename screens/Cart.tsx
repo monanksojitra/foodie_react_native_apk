@@ -40,25 +40,28 @@ const Cart = ({ navigation }) => {
                       className="h-full w-full rounded-full"
                     />
                   </View>
-                  <View className="pt-1 space-y-2 px-4">
+                  <View className="pt-1 space-y-1 px-4 w-[70%]">
                     <Text className="text-base font-semibold">
                       {item.food.foodName}
+                    </Text>
+                    <Text className="text-xs font-semibold text-black/50">
+                      {item.food.description}
                     </Text>
                     <Text className="text-base font-semibold text-originPrimary">
                       {item.food.price}$
                     </Text>
                   </View>
-                  <View className="flex flex-row space-x-3 bg-originPrimary h-8 rounded-3xl items-center  justify-center w-20 absolute bottom-5 right-5">
+                  <View className="flex flex-row bg-originPrimary  rounded-3xl items-center  justify-center w-20 absolute bottom-3 gap-x-1 right-4">
                     <TouchableOpacity
                       onPress={() => decreaseQuantity(item.food.id)}
                     >
-                      <Text className="text-white">-</Text>
+                      <Text className="text-white p-2">-</Text>
                     </TouchableOpacity>
                     <Text className="text-white">{item.quantity}</Text>
                     <TouchableOpacity
                       onPress={() => increaseQuantity(item.food.id)}
                     >
-                      <Text className="text-white">+</Text>
+                      <Text className="text-white p-2">+</Text>
                     </TouchableOpacity>
                   </View>
                 </Box>

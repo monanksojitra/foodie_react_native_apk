@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { createContext, useState, useContext } from "react";
 
 // Define interfaces for Food and CartItem
 export interface Food {
@@ -24,6 +24,7 @@ interface FoodContextType {
   decreaseQuantity: (foodId: string) => void;
   likeFood: Food[];
   addLikeFood: (food: Food) => void;
+  removeLikeFood: (foodId: string) => void;
 }
 
 // Create the context
@@ -36,13 +37,16 @@ const FoodContext = createContext<FoodContextType>({
   decreaseQuantity: () => {},
   likeFood: [],
   addLikeFood: () => {},
+  removeLikeFood: () => {},
 });
 
 // Create the context provider component
-export const FoodProvider = ({ children }) => {
+export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [foodData, setFoodData] = useState<Food[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [likeFood, setlikeFood] = useState<Food[]>([]);
+  const [likeFood, setLikeFood] = useState<Food[]>([]);
 
   // Method to add food to the cart
   const addToCart = (food: Food) => {
@@ -81,11 +85,17 @@ export const FoodProvider = ({ children }) => {
     setCart(updatedCart.filter((item) => item.quantity > 0));
   };
 
-  // Method to add linked food
+  // Method to add liked food
   const addLikeFood = (food: Food) => {
-    if (!likeFood.find((f) => f.id === food.id)) {
-      setlikeFood([...likeFood, food]);
+    const existingItem = likeFood.find((item) => item.id === food.id);
+    if (!existingItem) {
+      setLikeFood([...likeFood, food]);
     }
+  };
+
+  // Method to remove liked food
+  const removeLikeFood = (foodId: string) => {
+    setLikeFood(likeFood.filter((item) => item.id !== foodId));
   };
 
   return (
@@ -99,6 +109,7 @@ export const FoodProvider = ({ children }) => {
         decreaseQuantity,
         likeFood,
         addLikeFood,
+        removeLikeFood,
       }}
     >
       {children}

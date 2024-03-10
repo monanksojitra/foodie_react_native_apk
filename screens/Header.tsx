@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { cn } from "../util/Cn";
 
 const Header = ({
@@ -12,7 +12,7 @@ const Header = ({
   return (
     <View className="flex px-10 py-4 flex-row justify-between items-center ">
       <TouchableOpacity onPress={onpressback}>
-        <Ionicons name="arrow-back" size={26} />
+        <AntDesign name="left" size={26} color="black" />
       </TouchableOpacity>
       <Text className="text-lg font-semibold">{title}</Text>
 
