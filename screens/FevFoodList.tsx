@@ -28,7 +28,7 @@ const FevFoodList = ({ navigation }) => {
               </View>
               <View className="pt-1 space-y-1 pl-3 w-[60%]">
                 <Text className="text-base font-semibold">
-                  {item.item.foodName}
+                  {item.item.Name}
                 </Text>
                 <Text className="text-xs font-semibold text-black/50">
                   {item.item.description}

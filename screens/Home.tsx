@@ -6,24 +6,23 @@ import {
   Image,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FoodList from "./FoodList";
 import Box from "../components/Box";
 import { ScrollView } from "react-native-gesture-handler";
-import { foodList } from "../util/Data";
+import { foodList, sauceList, snackList, softDrinkList } from "../util/Data";
 const Home = ({ navigation }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const foodItems = [
-    "Foods",
-    "Drinks",
-    "Snacks",
-    "Sauce",
-    "Foods",
-    "Drinks",
-    "Snacks",
-    "Sauce",
+    { id: 0, name: "Foods", data: foodList },
+    { id: 1, name: "Drinks", data: softDrinkList },
+    { id: 2, name: "Snacks", data: snackList },
+    { id: 3, name: "Sauce", data: sauceList },
   ];
+  const [selectedItems, setSelectedItems] = useState(foodItems[0]);
+  useEffect(() => {
+    console.log(selectedItems);
+  }, [selectedItems]);
 
   return (
     <ScrollView className="h-full flex">
@@ -53,21 +52,21 @@ const Home = ({ navigation }) => {
           data={foodItems}
           renderItem={(item) => (
             <TouchableOpacity
-              onPress={() => setSelectedIndex(item.index)}
+              onPress={() => setSelectedItems(foodItems[item.index])}
               className="py-3"
             >
               <Text
                 className={`${
-                  selectedIndex === item.index
+                  selectedItems.id === item.index
                     ? "text-originPrimary"
                     : "text-black/50"
                 } px-5 py-3`}
               >
-                {item.item}
+                {item.item.name}
               </Text>
               <View
                 className={
-                  selectedIndex === item.index
+                  selectedItems.id === item.index
                     ? "h-1 w-full bg-originPrimary"
                     : " "
                 }
@@ -76,7 +75,7 @@ const Home = ({ navigation }) => {
           )}
         />
       </View>
-      <FoodList navigation={navigation} />
+      <FoodList navigation={navigation} items={selectedItems} />
     </ScrollView>
   );
 };

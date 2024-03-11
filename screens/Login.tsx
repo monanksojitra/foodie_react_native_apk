@@ -1,16 +1,29 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import Button from "../components/Button";
-
-const Login = ({ setIsLogin }) => {
+import { useFoodContext } from "../util/Context";
+interface FormData {
+  email: string;
+  password: string;
+  text?: string;
+}
+const Login: React.FC = () => {
+  const [userError, setUserError] = useState(false);
+  const { setLogin, isLogin } = useFoodContext();
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    setIsLogin(true);
+  } = useForm<FormData>();
+  const onSubmit = (data: FormData) => {
+    if (data.email === "admin@admin.com" && data.password === "@dmin1234") {
+      setLogin(true);
+      setUserError(false);
+      console.log(isLogin);
+    } else {
+      setUserError(true);
+    }
   };
   const [loginSignUp, setLoginSingUp] = useState(true);
 
@@ -53,7 +66,7 @@ const Login = ({ setIsLogin }) => {
                 control={control}
                 name="email"
                 rules={{
-                  required: true,
+                  required: "Email is required",
                   pattern: {
                     value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                     message: "Email is not valid",
@@ -68,7 +81,9 @@ const Login = ({ setIsLogin }) => {
                 )}
               />
               {errors.email && (
-                <Text className="text-red-500 py-2">Email is not Valid</Text>
+                <Text className="text-red-500 py-2">
+                  {errors.email.message}
+                </Text>
               )}
             </View>
             <View>
@@ -77,7 +92,7 @@ const Login = ({ setIsLogin }) => {
                 name="password"
                 control={control}
                 rules={{
-                  required: true,
+                  required: "Password is required",
                   pattern: {
                     value:
                       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -94,10 +109,19 @@ const Login = ({ setIsLogin }) => {
                 )}
               />
               {errors.password && (
-                <Text className="text-red-500 py-2">Password is Not Valid</Text>
+                <Text className="text-red-500 py-2">
+                  {errors.password.message}
+                </Text>
               )}
             </View>
             <Text className="text-originPrimary ">Forgot password?</Text>
+            {userError && (
+              <View className="flex items-center justify-center">
+                <Text className="text-originPrimary">
+                  User Not Found! Please try again{" "}
+                </Text>
+              </View>
+            )}
           </View>
         ) : (
           <View className="flex p-10 flex-col gap-y-5">
@@ -107,10 +131,10 @@ const Login = ({ setIsLogin }) => {
                 control={control}
                 name="text"
                 rules={{
-                  required: true,
-                  maxLength: {
+                  required: "Full name is required",
+                  minLength: {
                     value: 3,
-                    message: "Please enter name",
+                    message: "Full name should have at least 3 characters",
                   },
                 }}
                 render={({ field: { onChange, value } }) => (
@@ -121,8 +145,8 @@ const Login = ({ setIsLogin }) => {
                   />
                 )}
               />
-              {errors.email && (
-                <Text className="text-red-500 py-2">Email is not Valid</Text>
+              {errors.text && (
+                <Text className="text-red-500 py-2">{errors.text.message}</Text>
               )}
             </View>
             <View>
@@ -131,7 +155,7 @@ const Login = ({ setIsLogin }) => {
                 control={control}
                 name="email"
                 rules={{
-                  required: true,
+                  required: "Email is required",
                   pattern: {
                     value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                     message: "Email is not valid",
@@ -146,7 +170,9 @@ const Login = ({ setIsLogin }) => {
                 )}
               />
               {errors.email && (
-                <Text className="text-red-500 py-2">Email is not Valid</Text>
+                <Text className="text-red-500 py-2">
+                  {errors.email.message}
+                </Text>
               )}
             </View>
 
@@ -156,7 +182,7 @@ const Login = ({ setIsLogin }) => {
                 name="password"
                 control={control}
                 rules={{
-                  required: true,
+                  required: "Password is required",
                   pattern: {
                     value:
                       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -173,7 +199,9 @@ const Login = ({ setIsLogin }) => {
                 )}
               />
               {errors.password && (
-                <Text className="text-red-500 py-2">Password is Not Valid</Text>
+                <Text className="text-red-500 py-2">
+                  {errors.password.message}
+                </Text>
               )}
             </View>
             <Text className="text-black/50 py-2 text-xs">
@@ -185,7 +213,7 @@ const Login = ({ setIsLogin }) => {
         )}
         <View className="flex items-center justify-center p-10">
           <Button
-            onPress={onSubmit}
+            onPress={handleSubmit(onSubmit)}
             title={loginSignUp ? "Login" : "Sign-Up"}
           />
         </View>

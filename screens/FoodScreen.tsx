@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ToastAndroid,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
@@ -20,6 +26,7 @@ const FoodScreen = ({ navigation, route }) => {
       removeLikeFood(foodData.id), setLike(false);
     }
   };
+
   return (
     <SafeAreaView className="">
       <Header
@@ -30,8 +37,8 @@ const FoodScreen = ({ navigation, route }) => {
       <View className="flex py-5 items-center justify-center">
         <View>
           <Image
-            className="rounded-full"
-            source={require("../assets/food1.png")}
+            className="rounded-full h-40 aspect-square"
+            source={foodData.img}
           />
         </View>
         <View className="flex py-6 flex-row gap-x-1.5">
@@ -41,7 +48,7 @@ const FoodScreen = ({ navigation, route }) => {
           <View className="h-2 aspect-square bg-gray-300 rounded-full"></View>
         </View>
         <View className="flex gap-y-2 items-center justify-center px-10">
-          <Text className="text-2xl font-semibold">{foodData.foodName}</Text>
+          <Text className="text-2xl font-semibold">{foodData.Name}</Text>
           <Text className="text-xl font-semibold text-black/50 text-center">
             {foodData.description}
           </Text>
@@ -66,7 +73,12 @@ const FoodScreen = ({ navigation, route }) => {
         </View>
       </View>
       <View className="flex items-center justify-center">
-        <Button onPress={() => addToCart(foodData)} title="Add to cart" />
+        <Button
+          onPress={() => {
+            addToCart(foodData);
+          }}
+          title="Add to cart"
+        />
       </View>
     </SafeAreaView>
   );

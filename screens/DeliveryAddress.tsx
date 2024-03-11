@@ -6,6 +6,8 @@ import { Dialog, Portal, RadioButton } from "react-native-paper";
 import Button from "../components/Button";
 import PopupModel from "../components/PopupModel";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useFormContext } from "react-hook-form";
+import { useFoodContext } from "../util/Context";
 
 const DeliveryAddress = ({ navigation }) => {
   const [method, setMethod] = useState(0);
@@ -14,6 +16,7 @@ const DeliveryAddress = ({ navigation }) => {
     { id: 2, method: "Pick up" },
   ];
   const [visible, setVisible] = React.useState(true);
+  const { calculateTotalCost } = useFoodContext();
 
   return (
     <SafeAreaView>
@@ -74,7 +77,7 @@ const DeliveryAddress = ({ navigation }) => {
         </View>
         <View className="flex flex-row justify-between items-center py-10">
           <Text className="text-base font-normal">Total</Text>
-          <Text className="text-xl font-semibold">23,000</Text>
+          <Text className="text-xl font-semibold">{calculateTotalCost()}$</Text>
         </View>
       </View>
       <View className="w-full flex items-center justify-center">

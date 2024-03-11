@@ -16,9 +16,6 @@ const Cart = ({ navigation }) => {
     addLikeFood,
     removeFromCart,
   } = useFoodContext();
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
 
   return (
     <SafeAreaView>
@@ -48,7 +45,7 @@ const Cart = ({ navigation }) => {
                   </View>
                   <View className="pt-1 space-y-1 px-4 w-[70%]">
                     <Text className="text-base font-semibold">
-                      {item.food.foodName}
+                      {item.food.Name}
                     </Text>
                     <Text className="text-xs font-semibold text-black/50">
                       {item.food.description}

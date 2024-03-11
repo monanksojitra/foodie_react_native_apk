@@ -7,7 +7,7 @@ import Cart from "./screens/Cart";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import SearchFood from "./screens/SearchFood";
 import FoodScreen from "./screens/FoodScreen";
-import { FoodProvider } from "./util/Context";
+import { FoodProvider, useFoodContext } from "./util/Context";
 import Splash from "./screens/Splash";
 import Login from "./screens/Login";
 import Header from "./screens/Header";
@@ -49,6 +49,7 @@ const TabNav = ({ navigation }) => {
 };
 
 const CustomDrawerContent = (props) => {
+  const { setIsLogin } = useFoodContext();
   return (
     <DrawerContentScrollView {...props}>
       <View className="h-screen bg-originPrimary flex justify-between py-10">
@@ -66,10 +67,13 @@ const CustomDrawerContent = (props) => {
             </TouchableOpacity>
           ))}
         </View>
-        <View className="flex flex-row gap-2 p-10">
+        <TouchableOpacity
+          onPress={() => setIsLogin(false)}
+          className="flex flex-row gap-2 p-10"
+        >
           <Text className="text-white text-base font-semibold">Sign-out</Text>
           <AntDesign name="arrowright" size={28} color="white" />
-        </View>
+        </TouchableOpacity>
       </View>
     </DrawerContentScrollView>
   );
@@ -81,43 +85,41 @@ NativeWindStyleSheet.setOutput({
 });
 const App = () => {
   const [splashIsActive, setSplashIsActive] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
+  const { isLogin } = useFoodContext();
+
   useEffect(() => {
     setTimeout(() => {
       setSplashIsActive(false);
     }, 2000);
-  }, []);
+  }, [isLogin]);
   return (
     <>
-      {/* {splashIsActive ? (
+      {splashIsActive ? (
         <Splash />
-      ) : isLogin ? ( */}
-
-      <NavigationContainer>
-        <FoodProvider>
-          <Drawer.Navigator
-            drawerContent={(props) => <CustomDrawerContent {...props} />}
-            screenOptions={{ headerShown: false }}
-          >
-            <Drawer.Screen name="homeScreen" component={TabNav} />
-            <Drawer.Screen name="cart" component={Cart} />
-            <Drawer.Screen name="searchFood" component={SearchFood} />
-            <Drawer.Screen name="foodscreen" component={FoodScreen} />
-            <Drawer.Screen name="fooddata" component={FoodScreen} />
-            <Drawer.Screen name="profile" component={Profile} />
-            <Drawer.Screen name="editprofile" component={EditProfile} />
-            <Drawer.Screen name="offers" component={OfferAndPromo} />
-            <Drawer.Screen name="delivery" component={DeliveryAddress} />
-            <Drawer.Screen name="checkout" component={Checkout} />
-          </Drawer.Navigator>
-        </FoodProvider>
-      </NavigationContainer>
-
-      {/* ) : (
-        <Login setIsLogin={setIsLogin} />
-      )} */}
+      ) : isLogin ? (
+        <NavigationContainer>
+          <FoodProvider>
+            <Drawer.Navigator
+              drawerContent={(props) => <CustomDrawerContent {...props} />}
+              screenOptions={{ headerShown: false }}
+            >
+              <Drawer.Screen name="homeScreen" component={TabNav} />
+              <Drawer.Screen name="cart" component={Cart} />
+              <Drawer.Screen name="searchFood" component={SearchFood} />
+              <Drawer.Screen name="foodscreen" component={FoodScreen} />
+              <Drawer.Screen name="fooddata" component={FoodScreen} />
+              <Drawer.Screen name="profile" component={Profile} />
+              <Drawer.Screen name="editprofile" component={EditProfile} />
+              <Drawer.Screen name="offers" component={OfferAndPromo} />
+              <Drawer.Screen name="delivery" component={DeliveryAddress} />
+              <Drawer.Screen name="checkout" component={Checkout} />
+            </Drawer.Navigator>
+          </FoodProvider>
+        </NavigationContainer>
+      ) : (
+        <Login />
+      )}
     </>
   );
 };
-
 export default App;

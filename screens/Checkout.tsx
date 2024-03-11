@@ -6,10 +6,12 @@ import Box from "../components/Box";
 import { RadioButton } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import Button from "../components/Button";
+import { useFoodContext } from "../util/Context";
 
 const Checkout = ({ navigation }) => {
   const [selectionRadio, setSelectionRadio] = useState(0);
   const [method, setMethod] = useState(0);
+  const { calculateTotalCost } = useFoodContext();
   const deliveryType = [
     { id: 1, method: "Door delivery" },
     { id: 2, method: "Pick up" },
@@ -19,6 +21,7 @@ const Checkout = ({ navigation }) => {
     { id: 2, bgColor: "#EB4796", icon: "bank", title: "Bank account" },
     { id: 3, bgColor: "#0038FF", icon: "paypal", title: "Paypal" },
   ];
+
   return (
     <SafeAreaView className="h-full">
       <Header
@@ -89,7 +92,9 @@ const Checkout = ({ navigation }) => {
           </View>
           <View className="flex flex-row justify-between items-center py-7">
             <Text className="text-base font-normal">Total</Text>
-            <Text className="text-xl font-semibold">23,000</Text>
+            <Text className="text-xl font-semibold">
+              {calculateTotalCost()}$
+            </Text>
           </View>
         </View>
         <View className="w-full flex items-center justify-center mb-5">
