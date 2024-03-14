@@ -8,9 +8,9 @@ interface FormData {
   password: string;
   text?: string;
 }
-const Login: React.FC = () => {
+const Login: React.FC = ({ navigation }: any) => {
   const [userError, setUserError] = useState(false);
-  const { setLogin, isLogin } = useFoodContext();
+  const { setLogin } = useFoodContext();
   const {
     handleSubmit,
     control,
@@ -19,8 +19,8 @@ const Login: React.FC = () => {
   const onSubmit = (data: FormData) => {
     if (data.email === "admin@admin.com" && data.password === "@dmin1234") {
       setLogin(true);
+      navigation.navigate("main");
       setUserError(false);
-      console.log(isLogin);
     } else {
       setUserError(true);
     }

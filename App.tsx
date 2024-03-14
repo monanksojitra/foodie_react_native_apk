@@ -23,7 +23,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import OfferAndPromo from "./screens/OfferAndPromo";
 import DeliveryAddress from "./screens/DeliveryAddress";
 import Checkout from "./screens/Checkout";
+import { createStackNavigator } from "@react-navigation/stack";
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const drawerList = [
@@ -49,7 +51,6 @@ const TabNav = ({ navigation }) => {
 };
 
 const CustomDrawerContent = (props) => {
-  const { setIsLogin } = useFoodContext();
   return (
     <DrawerContentScrollView {...props}>
       <View className="h-screen bg-originPrimary flex justify-between py-10">
@@ -60,7 +61,7 @@ const CustomDrawerContent = (props) => {
               key={item.id}
               className="flex flex-row gap-3 items-center"
             >
-              <AntDesign name={item.icon} size={28} color="white" />
+              <AntDesign name={item.icon as any} size={28} color="white" />
               <Text className="text-white text-base font-semibold border-b py-4 w-[70%] border-white/60">
                 {item.title}
               </Text>
@@ -68,7 +69,7 @@ const CustomDrawerContent = (props) => {
           ))}
         </View>
         <TouchableOpacity
-          onPress={() => setIsLogin(false)}
+          onPress={() => {}}
           className="flex flex-row gap-2 p-10"
         >
           <Text className="text-white text-base font-semibold">Sign-out</Text>
@@ -86,40 +87,49 @@ NativeWindStyleSheet.setOutput({
 const App = () => {
   const [splashIsActive, setSplashIsActive] = useState(true);
   const { isLogin } = useFoodContext();
-
   useEffect(() => {
     setTimeout(() => {
       setSplashIsActive(false);
     }, 2000);
-  }, [isLogin]);
+  }, []);
   return (
     <>
       {splashIsActive ? (
         <Splash />
-      ) : isLogin ? (
-        <NavigationContainer>
-          <FoodProvider>
-            <Drawer.Navigator
-              drawerContent={(props) => <CustomDrawerContent {...props} />}
-              screenOptions={{ headerShown: false }}
-            >
-              <Drawer.Screen name="homeScreen" component={TabNav} />
-              <Drawer.Screen name="cart" component={Cart} />
-              <Drawer.Screen name="searchFood" component={SearchFood} />
-              <Drawer.Screen name="foodscreen" component={FoodScreen} />
-              <Drawer.Screen name="fooddata" component={FoodScreen} />
-              <Drawer.Screen name="profile" component={Profile} />
-              <Drawer.Screen name="editprofile" component={EditProfile} />
-              <Drawer.Screen name="offers" component={OfferAndPromo} />
-              <Drawer.Screen name="delivery" component={DeliveryAddress} />
-              <Drawer.Screen name="checkout" component={Checkout} />
-            </Drawer.Navigator>
-          </FoodProvider>
-        </NavigationContainer>
       ) : (
-        <Login />
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="login"
+            screenOptions={{ headerShown: false }}
+          >
+            <Stack.Screen name="main" component={Main} />
+            <Stack.Screen name="login" component={Login} />
+          </Stack.Navigator>
+        </NavigationContainer>
       )}
     </>
   );
 };
 export default App;
+
+const Main = () => {
+  return (
+    <FoodProvider>
+      <Drawer.Navigator
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
+        screenOptions={{ headerShown: false }}
+      >
+        <Drawer.Screen name="homeScreen" component={TabNav} />
+        <Drawer.Screen name="cart" component={Cart} />
+        <Drawer.Screen name="searchFood" component={SearchFood} />
+        <Drawer.Screen name="foodscreen" component={FoodScreen} />
+        <Drawer.Screen name="fooddata" component={FoodScreen} />
+        <Drawer.Screen name="profile" component={Profile} />
+        <Drawer.Screen name="editprofile" component={EditProfile} />
+        <Drawer.Screen name="offers" component={OfferAndPromo} />
+        <Drawer.Screen name="delivery" component={DeliveryAddress} />
+        <Drawer.Screen name="checkout" component={Checkout} />
+      </Drawer.Navigator>
+    </FoodProvider>
+  );
+};
