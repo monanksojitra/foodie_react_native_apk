@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mjpatel4444.foodie_apk"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c55f5989-6897-4eb9-8e9b-41b7c4434dba"
+      }
+    },
+    "owner": "mjpatel4444"
   }
 }
