@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "./Header";
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";

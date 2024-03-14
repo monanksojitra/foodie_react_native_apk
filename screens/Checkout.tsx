@@ -54,7 +54,11 @@ const Checkout = ({ navigation }) => {
                       className="h-14 flex items-center justify-center rounded-2xl aspect-square"
                       style={{ backgroundColor: item.bgColor }}
                     >
-                      <FontAwesome name={item.icon} size={24} color="white" />
+                      <FontAwesome
+                        name={item.icon as any}
+                        size={24}
+                        color="white"
+                      />
                     </View>
                     <Text className="text-base font-normal px-3">
                       {item.title}

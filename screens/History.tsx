@@ -1,11 +1,9 @@
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
-import Header from "./Header";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Box from "../components/Box";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { history } from "../util/Data";
-import Button from "../components/Button";
 
 const History = ({ navigation }) => {
   return (

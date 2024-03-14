@@ -1,12 +1,10 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import Header from "./Header";
 import Box from "../components/Box";
-import { Dialog, Portal, RadioButton } from "react-native-paper";
+import { RadioButton } from "react-native-paper";
 import Button from "../components/Button";
-import PopupModel from "../components/PopupModel";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useFormContext } from "react-hook-form";
 import { useFoodContext } from "../util/Context";
 
 const DeliveryAddress = ({ navigation }) => {

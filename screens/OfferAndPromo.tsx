@@ -1,17 +1,10 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  ToastAndroid,
-} from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Box from "../components/Box";
 import { MaterialIcons } from "@expo/vector-icons";
 import Header from "./Header";
 import { offerAndPromoCode } from "../util/Data";
-import { useFormContext } from "react-hook-form";
 import { useFoodContext } from "../util/Context";
 
 const OfferAndPromo = ({ navigation }) => {

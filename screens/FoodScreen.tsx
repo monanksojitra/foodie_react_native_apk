@@ -1,13 +1,6 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ToastAndroid,
-} from "react-native";
+import { View, Text, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
 import Button from "../components/Button";
 import Header from "./Header";
 import { Food, useFoodContext } from "../util/Context";

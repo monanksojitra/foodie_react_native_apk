@@ -1,13 +1,5 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  ReactNode,
-  Dispatch,
-  SetStateAction,
-} from "react";
+import React, { createContext, useState, useContext, ReactNode } from "react";
 import { ImageProps, ToastAndroid } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { foodList, sauceList, snackList, softDrinkList } from "./Data";
 
 // Define interfaces for Food and CartItem

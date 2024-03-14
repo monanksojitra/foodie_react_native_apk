@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { RadioButton } from "react-native-paper";
-import { Item } from "react-native-paper/lib/typescript/components/Drawer/Drawer";
 import Button from "../components/Button";
 import Box from "../components/Box";
 import Header from "./Header";
@@ -65,7 +64,11 @@ const EditProfile = ({ navigation }) => {
                   className="h-14 flex items-center justify-center rounded-2xl aspect-square"
                   style={{ backgroundColor: item.bgColor }}
                 >
-                  <FontAwesome name={item.icon} size={24} color="white" />
+                  <FontAwesome
+                    name={item.icon as any}
+                    size={24}
+                    color="white"
+                  />
                 </View>
                 <Text className="text-base font-normal px-3">{item.title}</Text>
               </TouchableOpacity>

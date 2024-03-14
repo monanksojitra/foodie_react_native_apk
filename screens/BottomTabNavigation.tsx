@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { View, Pressable, Dimensions, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Pressable } from "react-native";
 import Box from "../components/Box";
 
 export const BottomTabNavigation = ({ state, navigation }: any) => {
@@ -30,7 +29,7 @@ export const BottomTabNavigation = ({ state, navigation }: any) => {
                 name={
                   isFocused
                     ? bottomNavigationItems[index]
-                    : `${bottomNavigationItems[index]}-outline`
+                    : (`${bottomNavigationItems[index]}-outline` as any)
                 }
               />
             </View>

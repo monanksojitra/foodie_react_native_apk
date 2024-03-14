@@ -1,14 +1,6 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  FlatList,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
+import React from "react";
 import Box from "../components/Box";
-import { foodList } from "../util/Data";
 
 const FoodList = ({ navigation, items }) => {
   return (
