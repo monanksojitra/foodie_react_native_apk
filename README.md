@@ -1,4 +1,4 @@
-**Welcome to our Food Delivery App Repository!**
+**Welcome to our Food Delivery App Foodie!**
 
 🚀 **About**
 
