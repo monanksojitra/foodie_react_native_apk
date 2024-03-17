@@ -50,7 +50,6 @@ const TabNav = ({ navigation }) => {
 
 const CustomDrawerContent = (props) => {
   const { setLogin } = useFoodContext();
-  const navigation = useNavigation();
   const logout = () => {
     setLogin(false);
   };
@@ -88,29 +87,16 @@ NativeWindStyleSheet.setOutput({
   default: "native",
 });
 const App = () => {
-  const [splashIsActive, setSplashIsActive] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSplashIsActive(false);
-    }, 2000);
-  }, []);
   return (
-    <>
-      {splashIsActive ? (
-        <Splash />
-      ) : (
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="login"
-            screenOptions={{ headerShown: false }}
-          >
-            <Stack.Screen name="main" component={Main} />
-            <Stack.Screen name="login" component={Login} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      )}
-    </>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="login"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="main" component={Main} />
+        <Stack.Screen name="login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 export default App;
