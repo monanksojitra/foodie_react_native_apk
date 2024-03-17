@@ -62,7 +62,6 @@ export const FoodProvider: React.FC<{ children: ReactNode }> = ({
   const [isLogin, setIsLogin] = useState<boolean>();
 
   const setLogin = (value: boolean) => {
-    console.log("click login");
     setIsLogin(value);
   };
   // Method to add food to the cart

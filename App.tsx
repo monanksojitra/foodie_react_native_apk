@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { NativeWindStyleSheet } from "nativewind";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "./screens/Profile";
@@ -49,6 +49,11 @@ const TabNav = ({ navigation }) => {
 };
 
 const CustomDrawerContent = (props) => {
+  const { setLogin } = useFoodContext();
+  const navigation = useNavigation();
+  const logout = () => {
+    setLogin(false);
+  };
   return (
     <DrawerContentScrollView {...props}>
       <View className="h-screen bg-originPrimary flex justify-between py-10">
@@ -67,7 +72,7 @@ const CustomDrawerContent = (props) => {
           ))}
         </View>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => logout}
           className="flex flex-row gap-2 p-10"
         >
           <Text className="text-white text-base font-semibold">Sign-out</Text>
@@ -84,7 +89,7 @@ NativeWindStyleSheet.setOutput({
 });
 const App = () => {
   const [splashIsActive, setSplashIsActive] = useState(true);
-  const { isLogin } = useFoodContext();
+
   useEffect(() => {
     setTimeout(() => {
       setSplashIsActive(false);

@@ -4,8 +4,10 @@ import { Controller, useForm } from "react-hook-form";
 import Button from "../components/Button";
 import { useFoodContext } from "../util/Context";
 interface FormData {
-  email: string;
-  password: string;
+  loginemail: string;
+  signupemail: string;
+  loginpassword: string;
+  signuppassword: string;
   text?: string;
 }
 const Login: React.FC = ({ navigation }: any) => {
@@ -17,7 +19,10 @@ const Login: React.FC = ({ navigation }: any) => {
     formState: { errors },
   } = useForm<FormData>();
   const onSubmit = (data: FormData) => {
-    if (data.email === "admin@admin.com" && data.password === "@dmin1234") {
+    if (
+      data.loginemail === "admin@admin.com" &&
+      data.loginpassword === "@dmin1234"
+    ) {
       setLogin(true);
       navigation.navigate("main");
       setUserError(false);
@@ -64,7 +69,7 @@ const Login: React.FC = ({ navigation }: any) => {
               <Text className="opacity-50">Email address</Text>
               <Controller
                 control={control}
-                name="email"
+                name="loginemail"
                 rules={{
                   required: "Email is required",
                   pattern: {
@@ -80,16 +85,16 @@ const Login: React.FC = ({ navigation }: any) => {
                   />
                 )}
               />
-              {errors.email && (
+              {errors.loginemail && (
                 <Text className="text-red-500 py-2">
-                  {errors.email.message}
+                  {errors.loginemail.message}
                 </Text>
               )}
             </View>
             <View>
               <Text className="opacity-50">Password</Text>
               <Controller
-                name="password"
+                name="loginpassword"
                 control={control}
                 rules={{
                   required: "Password is required",
@@ -108,9 +113,9 @@ const Login: React.FC = ({ navigation }: any) => {
                   />
                 )}
               />
-              {errors.password && (
+              {errors.loginpassword && (
                 <Text className="text-red-500 py-2">
-                  {errors.password.message}
+                  {errors.loginpassword.message}
                 </Text>
               )}
             </View>
@@ -153,7 +158,7 @@ const Login: React.FC = ({ navigation }: any) => {
               <Text className="opacity-50">Email address</Text>
               <Controller
                 control={control}
-                name="email"
+                name="signupemail"
                 rules={{
                   required: "Email is required",
                   pattern: {
@@ -169,9 +174,9 @@ const Login: React.FC = ({ navigation }: any) => {
                   />
                 )}
               />
-              {errors.email && (
+              {errors.signupemail && (
                 <Text className="text-red-500 py-2">
-                  {errors.email.message}
+                  {errors.signupemail.message}
                 </Text>
               )}
             </View>
@@ -179,7 +184,7 @@ const Login: React.FC = ({ navigation }: any) => {
             <View>
               <Text className="opacity-50">Password</Text>
               <Controller
-                name="password"
+                name="signuppassword"
                 control={control}
                 rules={{
                   required: "Password is required",
@@ -198,9 +203,9 @@ const Login: React.FC = ({ navigation }: any) => {
                   />
                 )}
               />
-              {errors.password && (
+              {errors.signuppassword && (
                 <Text className="text-red-500 py-2">
-                  {errors.password.message}
+                  {errors.signuppassword.message}
                 </Text>
               )}
             </View>
