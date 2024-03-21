@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "foodie_apk",
-    "slug": "foodie_apk",
+    "slug": "foodie",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,11 +27,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "mjpatel4444",
     "extra": {
       "eas": {
-        "projectId": "c55f5989-6897-4eb9-8e9b-41b7c4434dba"
+        "projectId": "dd7bca25-fe05-4d8d-8bbb-ce0cb1eb49fa"
       }
-    },
-    "owner": "mjpatel4444"
+    }
   }
 }
